@@ -6,7 +6,11 @@ public class Xmss {
 	}
 
 	public static void main(String[] args) {
-		System.out.println("Hello, world!");
+		System.out.println("1. Add videogames");
+		System.out.println("2. Delete videogames");
+		System.out.println("3. Edit videogames");
+		System.out.println("4. View videogames");
+		System.out.println("5. Exit");
 	
 	}
 
