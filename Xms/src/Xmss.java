@@ -1,17 +1,20 @@
-
 public class Xmss {
 
 	public Xmss() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public static void main(String[] args) {
-		System.out.println("1. Add videogames");
-		System.out.println("2. Delete videogames");
-		System.out.println("3. Edit videogames");
-		System.out.println("4. View videogames");
-		System.out.println("5. Exit");
-	
-	}
-
+		int i = 100000; /* 100000s를 정수로 나타내었다. */
+		double D = 31536000;	 
+				double H = 86400;
+						double M = 3600;
+								int S = 1;
+				System.out.println("D days"+"="+i/D);
+	         	System.out.println("H hours"+"="+i/H);
+	         	System.out.println("M minutes"+"="+i/M);
+	         	System.out.println("S seconds"+"="+i/S);
+	         	
+						
+		}
 }
