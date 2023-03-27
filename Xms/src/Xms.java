@@ -29,34 +29,10 @@ public class Xms {
 			String videogameuserscore = input.next();
 			break; /* case 1을 끝낸다 */
 		case 2:
-			System.out.print("videogame name:");
-			String videogamename2 = input.next();
-			System.out.print("videogame genre:");
-			String videogamegenre2 = input.next();
-			System.out.print("videogame platform:");
-			String videogameplatform2 = input.next();
-			System.out.print("videogame user score:");
-			String videogameuserscore2 = input.next();
-			break;
 		case 3:
-			System.out.print("videogame name:");
-			String videogamename3 = input.next();
-			System.out.print("videogame genre:");
-			String videogamegenre3 = input.next();
-			System.out.print("videogame platform:");
-			String videogameplatform4 = input.next();
-			System.out.print("videogame user score:");
-			String videogameuserscore4 = input.next();
-			break;
 		case 4:
-			System.out.print("videogame name:");
-			String videogamename5 = input.next();
-			System.out.print("videogame genre:");
-			String videogamegenre5 = input.next();
-			System.out.print("videogame platform:");
-			String videogameplatform5 = input.next();
-			System.out.print("videogame user score:");
-			String videogameuserscore5 = input.next();
+			System.out.print("videogame name:"); /* 비디오 게임 이름을 입력받는다 */
+			String videogamename4 = input.next();
 			break;
 		}
        } 
