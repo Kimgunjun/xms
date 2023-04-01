@@ -5,8 +5,8 @@ public class Xms {
 	public Xms() {
 	}
 	public static void main(String[] args) {
-		int num = 0;
 		Scanner input = new Scanner(System.in); /*입력*/
+		int num = 5;
 
 		while (num != 6) { /*6을 입력하면 메뉴로 되돌아 온다*/
 		System.out.println("1. Add videogames"); /* 비디오 게임을 추가한다 */
@@ -17,24 +17,53 @@ public class Xms {
 		System.out.println("6. Exit"); /* 메뉴를 나간다 */
 		System.out.println("Select one number between 1-6:"); /* 1-6번 사이 숫자를 입력하시오를 출력한다 */
 		num = input.nextInt(); /*숫자입력을 받는다*/
-		switch(num) { /* 변수 값에 따라 다른 동작을 위해 사용 */
-		case 1:
-			System.out.print("videogame name:"); /* videogame name을 출력한다 */
-			String videogamename = input.next(); /* 문자 입력을 받는다 */
-			System.out.print("videogame genre:");
-			String videogamegenre = input.next();
-			System.out.print("videogame platform:");
-			String videogameplatform = input.next();
-			System.out.print("videogame user score:");
-			String videogameuserscore = input.next();
-			break; /* case 1을 끝낸다 */
-		case 2:
-		case 3:
-		case 4:
-			System.out.print("videogame name:"); /* 비디오 게임 이름을 입력받는다 */
-			String videogamename4 = input.next();
-			break;
+		if (num == 1) {
+			addvideogame();
+		}
+		else if (num == 2) {
+			deletevideogame();
+		}
+		else if (num == 3) {
+			editvideogame();
+		}
+		else if (num == 4) {
+			viewvideogame();
+		}
+		else if (num == 5) {
+			showvideogame();
 		}
        } 
+	}
+	
+		public static void addvideogame () {
+			Scanner input = new Scanner(System.in);
+			System.out.print("videogame NAME:");
+		    String videogameName = input.next();
+			System.out.println("videogameGenre");
+			String videogameGenre = input.next();
+			System.out.println("videogameUserscore");
+			int videogameUserscore = input.nextInt();
+			System.out.println("videogameMetasore");
+			int Metascore = input.nextInt();
     }
+		public static void deletevideogame () {
+			Scanner input = new Scanner(System.in);
+			System.out.print("videogame NAME:");
+			String videogameName = input.next();
+	}
+		public static void editvideogame () {
+			Scanner input = new Scanner(System.in);
+			System.out.print("videogame NAME:");
+			String videogameName = input.next();
+    }
+		public static void viewvideogame () {
+			Scanner input = new Scanner(System.in);
+			System.out.print("videogame NAME:");
+			String videogameName = input.next();
+    }
+		public static void showvideogame () {
+			Scanner input = new Scanner(System.in);
+			System.out.print("videogame NAME:");
+			String videogameName = input.next();
+		}
 }
