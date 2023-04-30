@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import videogame.FpsVideogame;
+import videogame.Videogame;
+
 public class GameManager {
 	
 	ArrayList<Videogame> videogames = new ArrayList<Videogame>();
@@ -10,23 +13,37 @@ public class GameManager {
     }
     
     public void addvideogame() { /* 1번을 선택하면 게임추가메뉴로 들어온다 */
-		Videogame videogame = new Videogame();
-		System.out.print("videogame NAME:");
-	    videogame.name = input.next();
-		System.out.println("videogameGenre");
-		videogame.genre = input.next();
-		System.out.println("videogameUserscore");
-		videogame.userscore = input.nextInt();
-		System.out.println("videogameMetasore");
-		videogame.metascore = input.nextInt();
-		videogames.add(videogame);
+    	int kind = 0;
+    	Videogame videogame;
+    	while (kind !=1 && kind != 2) {
+    	System.out.print("1 for Fps");
+    	System.out.print("2 for puzzle");
+    	System.out.print("Select num for Game Kind between 1 and 2::");
+	    kind = input.nextInt();
+	    if (kind == 1) {
+	    	videogame = new Videogame();
+	    	videogame.getUserInput(input);
+			videogames.add(videogame);
+	    	break;
+
+	    }
+	    else if ( (kind == 2) ) {
+	    	videogame = new FpsVideogame();
+	    	videogame.getUserInput(input);
+			videogames.add(videogame);
+	    	break;
+	    }
+	    else {
+	    	System.out.print("Select num for Game Kind between 1 and 2:");
+	    }
+    }
 }
 	public void deletevideogame() { /* 2번을 선택하면 게임삭제메뉴로 들어온다 */
 		System.out.print("videogame NAME:");
 		String videogameName = input.next();
 		int index = -1;
 		for (int i = 0; i<videogames.size(); i++) {
-			if (videogames.get(i).name == videogameName) {
+			if (videogames.get(i).getName() == videogameName) {
 				index = i;
 				break;
 			}
@@ -46,7 +63,7 @@ public class GameManager {
 		String videogameName = input.next();
 		for (int i = 0; i<videogames.size(); i++) {
 			Videogame videogame = videogames.get(i);
-			if (videogame.name == videogameName) {
+			if (videogame.getName() == videogameName) {
 				int num = -1;
 				while (num != 5) {
 					System.out.println("** Videogame Info Edit Menu **");
@@ -58,19 +75,23 @@ public class GameManager {
 					num = input.nextInt();
 					if (num == 1) {
 						System.out.print("Videogame Name:");
-						videogame.name = input.next();
+						String name = input.next();
+						videogame.setName(name);
 					}
 					else if (num == 2) {
 						System.out.print("Videogame Genre:");
-						videogame.genre = input.next();
+						String genre = input.next();
+						videogame.setGenre(genre);
 					}
 					else if (num == 3) {
 						System.out.print("Videogame UserScore:");
-						videogame.userscore = input.nextInt();
+						int userscore = input.nextInt();
+						videogame.setUserscore(userscore);
 					}
 					else if (num == 4) {
 						System.out.print("Videogame MetaScore:");
-						videogame.metascore = input.nextInt();
+						int metascore = input.nextInt();
+						videogame.setMetascore(metascore);
 					}
 					else {
 						continue;
