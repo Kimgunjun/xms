@@ -50,16 +50,33 @@ public class Videogame {
 	
 	public Videogame() {
 	}
+	public Videogame(GameKind kind) {
+		this.kind = kind;
+	}
 
-	public Videogame(String name, String genre, int userscore, int metascore) {
+	public Videogame(GameKind kind, String name, String genre, int userscore, int metascore) {
+		this.kind = kind;
 		this.name = name;
 		this.genre = genre;
 		this.userscore = userscore;
 		this.metascore = metascore;
 	}
+	
 	public void printInfo() {
-		// TODO Auto-generated method stub
-		System.out.println("name :" + name + " genre "+ genre +" userscore :" + userscore + " metascore: " + metascore);
+		String skind = "none";
+		switch(this.kind) {
+		case Fps:
+			skind = "F";
+			break;
+		case Puzzle:
+			skind = "P";
+			break;
+		case Rpg:
+			skind = "R";
+			break;
+			default:
+		}
+		System.out.println("kind:" + skind + "name :" + name + " genre "+ genre +" userscore :" + userscore + " metascore: " + metascore);
 	}
     public void getUserInput(Scanner input) {
     	System.out.print("videogame NAME:");

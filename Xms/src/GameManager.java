@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import videogame.FpsVideogame;
+import videogame.GameKind;
+import videogame.RpgVideogame;
 import videogame.Videogame;
 
 public class GameManager {
@@ -16,19 +18,26 @@ public class GameManager {
     	int kind = 0;
     	Videogame videogame;
     	while (kind !=1 && kind != 2) {
-    	System.out.print("1 for Fps");
-    	System.out.print("2 for puzzle");
-    	System.out.print("Select num for Game Kind between 1 and 2::");
+    	System.out.println("1 for Fps");
+    	System.out.println("2 for Rpg");
+    	System.out.println("3 for Puzzle");
+    	System.out.print("Select num 1, 2, or 3for Game Kind:");
 	    kind = input.nextInt();
 	    if (kind == 1) {
-	    	videogame = new Videogame();
+	    	videogame = new Videogame(GameKind.Puzzle);
 	    	videogame.getUserInput(input);
 			videogames.add(videogame);
 	    	break;
 
 	    }
 	    else if ( (kind == 2) ) {
-	    	videogame = new FpsVideogame();
+	    	videogame = new FpsVideogame(GameKind.Fps);
+	    	videogame.getUserInput(input);
+			videogames.add(videogame);
+	    	break;
+	    }
+	    else if ( (kind == 3) ) {
+	    	videogame = new RpgVideogame(GameKind.Rpg);
 	    	videogame.getUserInput(input);
 			videogames.add(videogame);
 	    	break;

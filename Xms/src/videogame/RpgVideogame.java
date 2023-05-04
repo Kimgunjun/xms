@@ -2,12 +2,15 @@ package videogame;
 
 import java.util.Scanner;
 
-public class FpsVideogame extends Videogame {
+public class RpgVideogame extends Videogame {
 	
-	public FpsVideogame(GameKind kind) {
+	protected int parentuserscore;
+	protected int parentmetascore;
+	
+	public RpgVideogame(GameKind kind) {
 		super(kind);
 	}
-
+	
 	  public void getUserInput(Scanner input) {
 	    	System.out.print("videogame NAME:");
 		    String name = input.next();
@@ -20,10 +23,10 @@ public class FpsVideogame extends Videogame {
 			char answer = 'x';
 			while (answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N')
 			{
-			  System.out.println("How game's userscore? (Y/N)");
+			  System.out.println("How parent's game's userscore? (Y/N)");
 			  answer = input.next().charAt(0);
 			  if (answer == 'y' || answer == 'Y') {
-			    System.out.println("videogameUserscore");
+			    System.out.println("parent's videogameUserscore");
 			    int userscore = input.nextInt();
 			    this.setUserscore(userscore);
 			}
@@ -38,5 +41,24 @@ public class FpsVideogame extends Videogame {
 			int metascore = input.nextInt();
 			this.setMetascore(metascore);
 	    }
-    }
+	  }
+			public void printInfo() {
+				String skind = "none";
+				switch(this.kind) {
+				case Fps:
+					skind = "F";
+					break;
+				case Puzzle:
+					skind = "P";
+					break;
+				case Rpg:
+					skind = "R";
+					break;
+					default:
+				}
+				System.out.println("kind:" + skind + "name :" + name + " genre "+ genre +" userscore :" + userscore + " metascore: " + metascore + " parent's userscore :" + userscore + " parent's metascore: " + metascore);
+			
+	  }
+	  
+	  
 }
