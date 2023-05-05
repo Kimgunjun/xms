@@ -18,9 +18,9 @@ public class GameManager {
     	int kind = 0;
     	Videogame videogame;
     	while (kind !=1 && kind != 2) {
-    	System.out.println("1 for Fps");
-    	System.out.println("2 for Rpg");
-    	System.out.println("3 for Puzzle");
+    	System.out.println("1 for puzzle");
+    	System.out.println("2 for Fps");
+    	System.out.println("3 for Rpg");
     	System.out.print("Select num 1, 2, or 3for Game Kind:");
 	    kind = input.nextInt();
 	    if (kind == 1) {
