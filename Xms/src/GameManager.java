@@ -3,12 +3,14 @@ import java.util.Scanner;
 
 import videogame.FpsVideogame;
 import videogame.GameKind;
+import videogame.PuzzleVideogame;
 import videogame.RpgVideogame;
 import videogame.Videogame;
+import videogame.VideogameInput;
 
 public class GameManager {
 	
-	ArrayList<Videogame> videogames = new ArrayList<Videogame>();
+	ArrayList<VideogameInput> videogames = new ArrayList<VideogameInput>();
     Scanner input;
     GameManager(Scanner input) {
     	this.input = input;
@@ -16,7 +18,7 @@ public class GameManager {
     
     public void addvideogame() { /* 1번을 선택하면 게임추가메뉴로 들어온다 */
     	int kind = 0;
-    	Videogame videogame;
+    	VideogameInput videogameInput;
     	while (kind !=1 && kind != 2) {
     	System.out.println("1 for puzzle");
     	System.out.println("2 for Fps");
@@ -24,22 +26,22 @@ public class GameManager {
     	System.out.print("Select num 1, 2, or 3for Game Kind:");
 	    kind = input.nextInt();
 	    if (kind == 1) {
-	    	videogame = new Videogame(GameKind.Puzzle);
-	    	videogame.getUserInput(input);
-			videogames.add(videogame);
+	    	videogameInput = new PuzzleVideogame(GameKind.Puzzle);
+	    	videogameInput.getUserInput(input);
+			videogames.add(videogameInput);
 	    	break;
 
 	    }
 	    else if ( (kind == 2) ) {
-	    	videogame = new FpsVideogame(GameKind.Fps);
-	    	videogame.getUserInput(input);
-			videogames.add(videogame);
+	    	videogameInput = new FpsVideogame(GameKind.Fps);
+	    	videogameInput.getUserInput(input);
+			videogames.add(videogameInput);
 	    	break;
 	    }
 	    else if ( (kind == 3) ) {
-	    	videogame = new RpgVideogame(GameKind.Rpg);
-	    	videogame.getUserInput(input);
-			videogames.add(videogame);
+	    	videogameInput = new RpgVideogame(GameKind.Rpg);
+	    	videogameInput.getUserInput(input);
+			videogames.add(videogameInput);
 	    	break;
 	    }
 	    else {
@@ -71,8 +73,8 @@ public class GameManager {
 		System.out.print("videogame NAME:");
 		String videogameName = input.next();
 		for (int i = 0; i<videogames.size(); i++) {
-			Videogame videogame = videogames.get(i);
-			if (videogame.getName() == videogameName) {
+			VideogameInput videogameInput = videogames.get(i);
+			if (videogameInput.getName() == videogameName) {
 				int num = -1;
 				while (num != 5) {
 					System.out.println("** Videogame Info Edit Menu **");
@@ -85,22 +87,22 @@ public class GameManager {
 					if (num == 1) {
 						System.out.print("Videogame Name:");
 						String name = input.next();
-						videogame.setName(name);
+						videogameInput.setName(name);
 					}
 					else if (num == 2) {
 						System.out.print("Videogame Genre:");
 						String genre = input.next();
-						videogame.setGenre(genre);
+						videogameInput.setGenre(genre);
 					}
 					else if (num == 3) {
 						System.out.print("Videogame UserScore:");
 						int userscore = input.nextInt();
-						videogame.setUserscore(userscore);
+						videogameInput.setUserscore(userscore);
 					}
 					else if (num == 4) {
 						System.out.print("Videogame MetaScore:");
 						int metascore = input.nextInt();
-						videogame.setMetascore(metascore);
+						videogameInput.setMetascore(metascore);
 					}
 					else {
 						continue;

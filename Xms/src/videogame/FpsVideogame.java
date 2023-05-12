@@ -2,7 +2,7 @@ package videogame;
 
 import java.util.Scanner;
 
-public class FpsVideogame extends Videogame {
+public class FpsVideogame extends Videogame implements VideogameInput {
 	
 	public FpsVideogame(GameKind kind) {
 		super(kind);
@@ -39,4 +39,21 @@ public class FpsVideogame extends Videogame {
 			this.setMetascore(metascore);
 	    }
     }
+	  public void printInfo() {
+			String skind = "none";
+			switch(this.kind) {
+			case Fps:
+				skind = "F";
+				break;
+			case Puzzle:
+				skind = "P";
+				break;
+			case Rpg:
+				skind = "R";
+				break;
+				default:
+			}
+			System.out.println("kind:" + skind + "name :" + name + " genre "+ genre +" userscore :" + userscore + " metascore: " + metascore + " parent's userscore :" + userscore + " parent's metascore: " + metascore);
+		
+}
 }

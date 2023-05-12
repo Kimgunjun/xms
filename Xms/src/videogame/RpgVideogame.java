@@ -2,7 +2,7 @@ package videogame;
 
 import java.util.Scanner;
 
-public class RpgVideogame extends Videogame {
+public class RpgVideogame extends Videogame implements VideogameInput {
 	
 	protected int parentuserscore;
 	protected int parentmetascore;

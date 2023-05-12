@@ -2,7 +2,7 @@ package videogame;
 
 import java.util.Scanner;
 
-public class Videogame {
+public abstract class Videogame { 
 	public GameKind getKind() {
 		return kind;
 	}
@@ -42,7 +42,7 @@ public class Videogame {
 	public void setMetascore(int metascore) {
 		this.metascore = metascore;
 	}
-	protected GameKind kind = GameKind.Fps;
+	protected GameKind kind = GameKind.Puzzle;
 	protected String name;
 	protected String genre;
 	protected int userscore;
@@ -62,38 +62,7 @@ public class Videogame {
 		this.metascore = metascore;
 	}
 	
-	public void printInfo() {
-		String skind = "none";
-		switch(this.kind) {
-		case Fps:
-			skind = "F";
-			break;
-		case Puzzle:
-			skind = "P";
-			break;
-		case Rpg:
-			skind = "R";
-			break;
-			default:
-		}
-		System.out.println("kind:" + skind + "name :" + name + " genre "+ genre +" userscore :" + userscore + " metascore: " + metascore);
-	}
-    public void getUserInput(Scanner input) {
-    	System.out.print("videogame NAME:");
-	    String name = input.next();
-	    this.setName(name);
-	    
-		System.out.println("videogameGenre");
-		String genre = input.next();
-		this.setGenre(genre);
-		
-		System.out.println("videogameUserscore");
-		int userscore = input.nextInt();
-		this.setUserscore(userscore);
-		
-		System.out.println("videogameMetasore");
-		int metascore = input.nextInt();
-		this.setMetascore(metascore);
-    }
+	public abstract void printInfo();
+ 
 }
     
