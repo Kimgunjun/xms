@@ -2,58 +2,55 @@ package videogame;
 
 import java.util.Scanner;
 
-public class FpsVideogame extends Videogame implements VideogameInput {
+import exception.UserscoreFormatException;
+
+public class FpsVideogame extends TeenageUser {
+	
+	protected int Userscore;
+	protected int Metascore;
 	
 	public FpsVideogame(GameKind kind) {
 		super(kind);
 	}
 
 	  public void getUserInput(Scanner input) {
-	    	System.out.print("videogame NAME:");
-		    String name = input.next();
-		    this.setName(name);
-		    
-			System.out.println("videogameGenre");
-			String genre = input.next();
-			this.setGenre(genre);
-			
-			char answer = 'x';
-			while (answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N')
-			{
-			  System.out.println("How game's userscore? (Y/N)");
-			  answer = input.next().charAt(0);
-			  if (answer == 'y' || answer == 'Y') {
-			    System.out.println("videogameUserscore");
-			    int userscore = input.nextInt();
-			    this.setUserscore(userscore);
-			}
-			  else if (answer == 'n' || answer == 'N') {
-		      this.setUserscore(userscore);
-		      break;
-			}
-			else {
-				
-			}
-			System.out.println("videogameMetasore");
-			int metascore = input.nextInt();
-			this.setMetascore(metascore);
+            setVideogameName(input);
+            setVideogameGenre(input);
+            setVideogameUsecorewithYN(input);
+            setyourVideogamescorewithYN(input);
+
+	     	setVideogameMetaScore(input);
+
 	    }
-    }
-	  public void printInfo() {
-			String skind = "none";
-			switch(this.kind) {
-			case Fps:
-				skind = "F";
-				break;
-			case Puzzle:
-				skind = "P";
-				break;
-			case Rpg:
-				skind = "R";
-				break;
-				default:
+    
+	  public void setyourVideogamescorewithYN(Scanner input) {
+			char answer = 'x';
+			while (answer != 'y' && answer != 'y' && answer != 'n' && answer != 'N'){
+				System.out.print("How game's your score? (Y/N) ");
+				answer = input.next().charAt(0);
+				try {
+				if(answer == 'y' ||  answer == 'Y') {
+					setVideogameMetaScore(input);
+					break;
+				}
+				else if (answer == 'n' ||  answer == 'N') {
+					this.setUserscore("");
+					break;
+				}
+				else {
+				  }
+				}
+				  catch(UserscoreFormatException e) {
+			            System.out.println("Incorrect Userscore Format. put the userscore that contain %");		
+				  }
 			}
+		  
+	  }
+	  
+	  public void printInfo() {
+		  String skind = getkindString();
 			System.out.println("kind:" + skind + "name :" + name + " genre "+ genre +" userscore :" + userscore + " metascore: " + metascore + " parent's userscore :" + userscore + " parent's metascore: " + metascore);
 		
 }
+
 }

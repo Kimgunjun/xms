@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import videogame.FpsVideogame;
@@ -19,7 +20,8 @@ public class GameManager {
     public void addvideogame() { /* 1번을 선택하면 게임추가메뉴로 들어온다 */
     	int kind = 0;
     	VideogameInput videogameInput;
-    	while (kind !=1 && kind != 2) {
+    	while (kind < 1 || kind > 3) {
+    		try {
     	System.out.println("1 for puzzle");
     	System.out.println("2 for Fps");
     	System.out.println("3 for Rpg");
@@ -47,75 +49,86 @@ public class GameManager {
 	    else {
 	    	System.out.print("Select num for Game Kind between 1 and 2:");
 	    }
-    }
+       }	
+    	  catch(InputMismatchException e) {
+				System.out.println("Please put an integer between 1 and 5!");
+				if (input.hasNext()) {
+					input.next();
+				}
+				kind = -1;
+     }
+   }
 }
 	public void deletevideogame() { /* 2번을 선택하면 게임삭제메뉴로 들어온다 */
 		System.out.print("videogame NAME:");
 		String videogameName = input.next();
-		int index = -1;
+		int index = findIndex(videogameName);
+		removefromVideogames(index, videogameName);
+	}
+    public int findIndex(String videogameName) {
+    	int index = -1;
 		for (int i = 0; i<videogames.size(); i++) {
 			if (videogames.get(i).getName() == videogameName) {
 				index = i;
 				break;
 			}
 		}
-		
+    	return index;
+    }
+
+	public int removefromVideogames(int index, String videogameName) {
 		if (index >= 0) { 
 			videogames.remove(index);
 			System.out.println("the videogame " + videogameName + "is deleted");
+			return 1;
 		}
 		else {
 			System.out.println("the videogame has not been registered");
-			return;
+			return -1;
 		}
-}
+	}
 	public void editvideogame() { /* 3번을 선택하면 게임편집메뉴로 들어온다 */
 		System.out.print("videogame NAME:");
 		String videogameName = input.next();
 		for (int i = 0; i<videogames.size(); i++) {
-			VideogameInput videogameInput = videogames.get(i);
-			if (videogameInput.getName() == videogameName) {
+			VideogameInput videogame = videogames.get(i);
+			if (videogame.getName() == videogameName) {
 				int num = -1;
 				while (num != 5) {
-					System.out.println("** Videogame Info Edit Menu **");
-					System.out.println(" 1. Edit Name");
-					System.out.println(" 2. Edit Genre");
-					System.out.println(" 3. Edit UserScore");
-					System.out.println(" 4. Edit MetaScore");
-					System.out.println("Select one number between 1 - 6:");
+					showEditMenu();
 					num = input.nextInt();
-					if (num == 1) {
-						System.out.print("Videogame Name:");
-						String name = input.next();
-						videogameInput.setName(name);
-					}
-					else if (num == 2) {
-						System.out.print("Videogame Genre:");
-						String genre = input.next();
-						videogameInput.setGenre(genre);
-					}
-					else if (num == 3) {
-						System.out.print("Videogame UserScore:");
-						int userscore = input.nextInt();
-						videogameInput.setUserscore(userscore);
-					}
-					else if (num == 4) {
-						System.out.print("Videogame MetaScore:");
-						int metascore = input.nextInt();
-						videogameInput.setMetascore(metascore);
-					}
-					else {
-						continue;
-					}// if
+					switch(num) {
+					case 1: videogame.setVideogameName(input);
+						break;
+					case 2: videogame.setVideogameGenre(input);
+						break;
+					case 3: videogame.setVideogameUserScore(input);
+						break;
+					case 4: videogame.setVideogameMetaScore(input);
+						break;
+						default:
+							continue;
+					}		
 				}//while
 				break;
 			}//if
 		}//for
 }
-	public void viewvideogame() { /* 4번을 선택하면 게임보기메뉴로 들어온다 */
+	public void viewvideogame() { 
+		System.out.println("# of registered videogames :" + videogames.size());/* 4번을 선택하면 게임보기메뉴로 들어온다 */
 		for (int i = 0; i<videogames.size(); i++) {
 			videogames.get(i).printInfo();
      	}
 	}
 	
+
+	
+	public void showEditMenu() {
+		System.out.println("** Videogame Info Edit Menu **");
+		System.out.println(" 1. Edit Name");
+		System.out.println(" 2. Edit Genre");
+		System.out.println(" 3. Edit UserScore");
+		System.out.println(" 4. Edit MetaScore");
+		System.out.println("Select one number between 1 - 6:");
+	}
 }
