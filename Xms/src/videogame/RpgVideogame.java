@@ -3,7 +3,7 @@ package videogame;
 import java.util.Scanner;
 
 public class RpgVideogame extends TeenageUser {
-	
+
 	protected int parentuserscore;
 	protected int parentmetascore;
 	

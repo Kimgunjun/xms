@@ -5,7 +5,7 @@ import java.util.Scanner;
 import exception.UserscoreFormatException;
 
 public abstract class TeenageUser extends Videogame {
-	
+
 	public TeenageUser(GameKind kind) {
 		super(kind);
 	}

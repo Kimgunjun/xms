@@ -3,7 +3,7 @@ package videogame;
 import java.util.Scanner;
 
 public class PuzzleVideogame extends Videogame {
-	
+
 	public PuzzleVideogame(GameKind kind) {
 		super(kind);
 	}

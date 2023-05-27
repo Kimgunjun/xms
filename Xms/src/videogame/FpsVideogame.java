@@ -5,7 +5,7 @@ import java.util.Scanner;
 import exception.UserscoreFormatException;
 
 public class FpsVideogame extends TeenageUser {
-	
+
 	protected int Userscore;
 	protected int Metascore;
 	

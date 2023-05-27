@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -6,13 +7,17 @@ import videogame.FpsVideogame;
 import videogame.GameKind;
 import videogame.PuzzleVideogame;
 import videogame.RpgVideogame;
-import videogame.Videogame;
 import videogame.VideogameInput;
 
-public class GameManager {
+public class GameManager implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 363434485085604838L;
 	
 	ArrayList<VideogameInput> videogames = new ArrayList<VideogameInput>();
-    Scanner input;
+    transient Scanner input;
     GameManager(Scanner input) {
     	this.input = input;
     }

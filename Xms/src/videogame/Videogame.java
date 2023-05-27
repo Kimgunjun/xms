@@ -1,10 +1,18 @@
 package videogame;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import exception.UserscoreFormatException;
 
-public abstract class Videogame implements VideogameInput { 
+public abstract class Videogame implements VideogameInput, Serializable { 
+
+	protected GameKind kind = GameKind.Puzzle;
+	protected String name;
+	protected String genre;
+	protected String userscore;
+	protected int metascore;
+
 	public GameKind getKind() {
 		return kind;
 	}
@@ -48,11 +56,6 @@ public abstract class Videogame implements VideogameInput {
 	public void setMetascore(int metascore) {
 		this.metascore = metascore;
 	}
-	protected GameKind kind = GameKind.Puzzle;
-	protected String name;
-	protected String genre;
-	protected String userscore;
-	protected int metascore;
 	
 	public Videogame() {
 	}
