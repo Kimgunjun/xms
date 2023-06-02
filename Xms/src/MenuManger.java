@@ -8,21 +8,21 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import log.EventLogger;
 
-
-
 public class MenuManger {
 	static EventLogger logger = new EventLogger("log.txt");
 	
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
+	
 		GameManager gameManager = getObject("gamemanager.ser");
+		
 		if (gameManager == null) {
 			gameManager = new GameManager(input); 
 			
-		
+		}
 		selectMenu(input, gameManager);
 		putObject(gameManager, "gamemanager.ser");
-		}
+		
    }
    public static void selectMenu(Scanner input, GameManager gameManager) {
 		int num = -1;
