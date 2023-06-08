@@ -1,3 +1,4 @@
+package manager;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -6,25 +7,32 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import gui.WindowFrame;
 import log.EventLogger;
 
-public class MenuManger {
+public class MenuManager {
 	static EventLogger logger = new EventLogger("log.txt");
 	
 	public static void main(String[] args) {
-		Scanner input = new Scanner(System.in);
-	
-		GameManager gameManager = getObject("gamemanager.ser");
 		
-		if (gameManager == null) {
-			gameManager = new GameManager(input); 
+		Scanner input = new Scanner(System.in);
+		VideogameManager videogameManager = getObject("videogamemanager.ser");
+		
+		if (videogameManager == null) {
+			videogameManager = new VideogameManager(input); 
 			
 		}
-		selectMenu(input, gameManager);
-		putObject(gameManager, "gamemanager.ser");
+		else {
+			videogameManager.setScanner(input);
+		}
+		
+		WindowFrame frame = new WindowFrame(videogameManager);
+		selectMenu(input, videogameManager);
+		putObject(videogameManager, "videogamemanager.ser");
 		
    }
-   public static void selectMenu(Scanner input, GameManager gameManager) {
+   public static void selectMenu(Scanner input, VideogameManager videogameManager) {
 		int num = -1;
 		while (num != 5) {
 			try {
@@ -32,19 +40,19 @@ public class MenuManger {
 		num = input.nextInt(); 
 		switch(num) {
 			case 1:
-				gameManager.addvideogame();
+				videogameManager.addvideogame();
 				logger.log("add a videogame");
 				break;
 			case 2:
-				gameManager.deletevideogame();
+				videogameManager.deletevideogame();
 				logger.log("delete a videogame");
 				break;
 			case 3:
-				gameManager.editvideogame();
+				videogameManager.editvideogame();
 				logger.log("edit a videogame");
 				break;
 			case 4:
-				gameManager.viewvideogame();
+				videogameManager.viewvideogames();
 				logger.log("edit a list of videogame");
 				break;
 		default:
@@ -70,33 +78,33 @@ public class MenuManger {
    
    }
    
-   public static GameManager getObject(String filename) {
-	   GameManager gameManager = null;
+   public static VideogameManager getObject(String filename) {
+	   VideogameManager videogameManager = null;
 	   try {
 		   FileInputStream file = new FileInputStream(filename);
 		   ObjectInputStream in = new ObjectInputStream(file);
 		   
-		   gameManager = (GameManager) in.readObject();
+		   videogameManager = (VideogameManager) in.readObject();
 		   
 		   in.close();
 		   file.close();
 	   } catch (FileNotFoundException e) {
-		  return gameManager;
+		  return videogameManager;
 	   } catch (IOException e) {
      	   e.printStackTrace();
        } catch (ClassNotFoundException e) {
 	       e.printStackTrace();
        }
 	  
-       return gameManager;
+       return videogameManager;
 	   
    }
-public static void putObject(GameManager gameManager, String filename) {
+public static void putObject(VideogameManager videogameManager, String filename) {
 	   try {
 		   FileOutputStream  file = new FileOutputStream(filename);
 		   ObjectOutputStream out = new ObjectOutputStream(file);
 		   
-		   out.writeObject(gameManager);
+		   out.writeObject(videogameManager);
 		   
 		   out.close();
 		   file.close();

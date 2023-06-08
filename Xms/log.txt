@@ -1,0 +1,4 @@
+6월 08, 2023 8:00:31 오후 log.EventLogger log
+INFO: add a videogame
+6월 08, 2023 8:00:37 오후 log.EventLogger log
+INFO: edit a list of videogame

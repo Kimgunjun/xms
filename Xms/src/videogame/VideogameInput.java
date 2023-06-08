@@ -5,6 +5,7 @@ import java.util.Scanner;
 import exception.UserscoreFormatException;
 
 public interface VideogameInput {
+	
 	public String getName();
 	
 	public void setName(String name);
@@ -23,7 +24,7 @@ public interface VideogameInput {
 	
 	public void getUserInput(Scanner input);
 	
-	public abstract void printInfo();
+	public void printInfo();
 	
 	public void setVideogameName(Scanner input);
 	
@@ -32,4 +33,5 @@ public interface VideogameInput {
 	public void setVideogameUserScore(Scanner input);
 	
 	public void setVideogameMetaScore(Scanner input);
+
 }

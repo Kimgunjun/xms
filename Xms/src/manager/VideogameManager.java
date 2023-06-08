@@ -1,3 +1,4 @@
+package manager;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -7,9 +8,10 @@ import videogame.FpsVideogame;
 import videogame.GameKind;
 import videogame.PuzzleVideogame;
 import videogame.RpgVideogame;
+import videogame.Videogame;
 import videogame.VideogameInput;
 
-public class GameManager implements Serializable{
+public class VideogameManager implements Serializable{
 	
 	/**
 	 * 
@@ -18,7 +20,7 @@ public class GameManager implements Serializable{
 	
 	ArrayList<VideogameInput> videogames = new ArrayList<VideogameInput>();
     transient Scanner input;
-    GameManager(Scanner input) {
+    VideogameManager(Scanner input) {
     	this.input = input;
     }
     
@@ -118,14 +120,21 @@ public class GameManager implements Serializable{
 				break;
 			}//if
 		}//for
-}
-	public void viewvideogame() { 
+	}
+	public void viewvideogames() { 
 		System.out.println("# of registered videogames :" + videogames.size());/* 4번을 선택하면 게임보기메뉴로 들어온다 */
 		for (int i = 0; i<videogames.size(); i++) {
 			videogames.get(i).printInfo();
      	}
 	}
 	
+	public int size() {
+	    return videogames.size();
+	}
+	
+	public VideogameInput get(int index) {
+		return (Videogame) videogames.get(index);
+	}
 
 	
 	public void showEditMenu() {
@@ -135,5 +144,9 @@ public class GameManager implements Serializable{
 		System.out.println(" 3. Edit UserScore");
 		System.out.println(" 4. Edit MetaScore");
 		System.out.println("Select one number between 1 - 6:");
+	}
+
+	public void setScanner(Scanner input) {
+		
 	}
 }
